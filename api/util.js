@@ -1,4 +1,5 @@
 // started in 12-201 Creating the boilerplate Lambda Functions
+// continued in 12-202 Writing the Lambda handlers #1
 
 // fish out specific content of HTTP Requests' headers 12-202 Writing the Lambda handlers #1
 const getUserId = (headers) => {
