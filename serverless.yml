@@ -43,7 +43,14 @@ provider:
         - dynamodb:DeleteItem
       Resource: "arn:aws:dynamodb:${opt: region, self:provider.region}:*:table/${self:provider.environment.NOTES_TABLE}"
       # region code either from command line (opt) or from the provider properties; table name from the environment variable defined above
-        
+
+# 12-206 Defining Lambda Functions & API endpoints 
+functions:
+  add-note:
+  update-note:
+  get-notes:
+  get-note:
+  delete-note:
 
 resources:
   Resources:
