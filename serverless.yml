@@ -23,6 +23,21 @@ service: sls-notes-backend
 plugins:
   - serverless-offline
 
+custom:
+  allowedHeaders:
+    - Accept
+    - Content-Type
+    - Content-Length
+    # The below headers are for use in later lectures' Cognito access control
+    - X-Amz-Date
+    - X-Api-Key
+    - X-Amz-Security-Token
+    - X-Amz-User-Agent
+    # The below headers are the custom headers as defined in util.js
+    - app_user_id
+    - app_user_name
+
+
 provider:
   name: aws
   runtime: nodejs12.x
@@ -47,10 +62,60 @@ provider:
 # 12-206 Defining Lambda Functions & API endpoints 
 functions:
   add-note:
-  update-note:
+    handler: api/add-note.handler   # filename.handler
+    description: POST /note
+    events:
+      - http:
+          path: note                # NB double indenting
+          method: post
+          cors: 
+            origin: '*'
+            headers:  ${self:custom.allowedHeaders}   # use custom property defined above to whitelist
+        # NB custom headers are used (with user_id and user_name - cf util.js) - these Requests must be allowed through API Gateway
+        
+  update-note: 
+    handler: api/update-note.handler   # filename.handler
+    description: PATCH /note            # why no note_id here? cf update-note.js
+    events:
+      - http:
+          path: note                # NB double indenting
+          method: patch
+          cors: 
+            origin: '*'
+            headers:  ${self:custom.allowedHeaders}   # use custom property defined above to whitelist
+
   get-notes:
+    handler: api/get-notes.handler   # filename.handler
+    description: GET /notes
+    events:
+      - http:
+          path: notes                # NB double indenting
+          method: get
+          cors: 
+            origin: '*'
+            headers:  ${self:custom.allowedHeaders}   # use custom property defined above to whitelist
+
   get-note:
+    handler: api/get-note.handler   # filename.handler
+    description: GET /note/n/{note_id}
+    events:
+      - http:
+          path: note/n/{note_id}     # NB double indenting
+          method: get
+          cors: 
+            origin: '*'
+            headers:  ${self:custom.allowedHeaders}   # use custom property defined above to whitelist
+
   delete-note:
+    handler: api/delete-note.handler   # filename.handler
+    description: DELETE /note
+    events:
+      - http:
+          path: note/t/{timestamp}     # NB double indenting
+          method: delete
+          cors: 
+            origin: '*'
+            headers:  ${self:custom.allowedHeaders}   # use custom property defined above to whitelist
 
 resources:
   Resources:
