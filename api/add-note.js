@@ -27,7 +27,7 @@ const util = require('./util.js');      // get our own utility functions
 
         item.note_id = item.user_id + ':' + uuidv4();   // UUID'd string for partition key value (cf )
         item.timestamp = moment().unix();
-        item.expires = moment().add(90, 'days'), unix();
+        item.expires = moment().add(90, 'days').unix();
 
         let data = await dynamodb.put({
             TableName: tableName,
