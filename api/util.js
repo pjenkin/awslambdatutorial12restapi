@@ -11,4 +11,4 @@ module.exports = {
     getResponseHeaders
 }
 
-// The module's/file's exports are an object containing (what happeed to be the function) getResponseHeaders
+// The module's/file's exports are an object containing (what happened to be the function) getResponseHeaders
