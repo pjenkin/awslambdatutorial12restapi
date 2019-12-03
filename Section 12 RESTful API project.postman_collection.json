@@ -132,6 +132,129 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "get-notes paginated GET localhost check",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "app_user_id",
+						"value": "test_user",
+						"type": "text"
+					},
+					{
+						"key": "app_user_name",
+						"value": "TestUserPJ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/notes?limit=5&start=1575401191",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"notes"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "5"
+						},
+						{
+							"key": "start",
+							"value": "1575401191"
+						}
+					]
+				},
+				"description": "Get the next 'page' of notes (5 per page) from the DynamoDB table(specific to records entered on 3/12/19) - using \r\n\"LastEvaluatedKey\": {\r\n        \"user_id\": \"test_user\",\r\n        \"timestamp\": 1575401191\r\n    }\r\n"
+			},
+			"response": []
+		},
+		{
+			"name": "delete-notes DELETE localhost check",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "app_user_id",
+						"value": "test_user",
+						"type": "text"
+					},
+					{
+						"key": "app_user_name",
+						"value": "TestUserPJ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/note/t/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"note",
+						"t",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-note (singular) GET localhost check",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "app_user_id",
+						"value": "test_user",
+						"type": "text"
+					},
+					{
+						"key": "app_user_name",
+						"value": "TestUserPJ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/note/n/test_user:835404f1-61e7-45e0-80f1-6a8fe6d3cca2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"note",
+						"n",
+						"test_user:835404f1-61e7-45e0-80f1-6a8fe6d3cca2"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"protocolProfileBehavior": {}
