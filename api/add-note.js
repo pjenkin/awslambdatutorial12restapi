@@ -20,6 +20,7 @@ const util = require('./util.js');      // get our own utility functions
  {
      try {
          // function's main logic to go here
+        // Assemble the data to store
         let item = JSON.parse(event.body).Item;
         item.user_id = util.getUserId(event.headers);
         item.user_name = util.getUserName(event.headers);
