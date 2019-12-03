@@ -2,7 +2,7 @@
 
 
 /**
- * ROUTE: POST /note/n/{node_id} - the endpoint (note_id?)
+ * ROUTE: POST /note/n/{note_id} - the endpoint (node_id?)
  * Update a specific note
  */
 

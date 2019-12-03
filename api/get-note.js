@@ -2,7 +2,7 @@
 
 
 /**
- * ROUTE: GET /note/n/{node_id} - the endpoint (note_id?)
+ * ROUTE: GET /note/n/{note_id} - the endpoint (node_id?)
  * Get a specific note
  */
 
