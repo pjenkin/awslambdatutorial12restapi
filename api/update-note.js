@@ -24,7 +24,7 @@ exports.handler = async(event) =>
         item.user_id = util.getUserId(event.headers);
         item.user_name = util.getUserName(event.headers);
 
-        item.expires = moment().add(90, 'days'), unix();
+        item.expires = moment().add(90, 'days').unix();
 
         let data = await dynamodb.put({
             TableName: tableName,

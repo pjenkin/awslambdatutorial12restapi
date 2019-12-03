@@ -1,0 +1,138 @@
+{
+	"info": {
+		"_postman_id": "8e662bfc-67e0-48cf-b864-f9a377cd73dc",
+		"name": "Section 12 RESTful API project",
+		"description": "Section 12 of Udemy course on AWS Lambda serverless - a REST API backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "add-note POST localhost check",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "app_user_id",
+						"value": "test_user",
+						"type": "text"
+					},
+					{
+						"key": "app_user_name",
+						"value": "TestUserPJ",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Item\":\n\t{\n\t\t\"title\": \"A first note\",\n\t\t\"content\": \"My first note d'say hello!\",\n\t\t\"cat\": \"Usual\"\n\t}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/note",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"note"
+					]
+				},
+				"description": "Check the add-note with POST verb to see if note posted to db, localhost:3000 as used by serverless-offline"
+			},
+			"response": []
+		},
+		{
+			"name": "update-note PATCH localhost check",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "app_user_id",
+						"value": "test_user",
+						"type": "text"
+					},
+					{
+						"key": "app_user_name",
+						"value": "TestUserPJ",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Item\":\n\t{\n\t\t\"timestamp\": 1575400278,\n\t\t\"note_id\": \"test_user:835404f1-61e7-45e0-80f1-6a8fe6d3cca2\",\n\t\t\"title\": \"A first note, redux\",\n\t\t\"content\": \"My first note d'still say hello!\",\n\t\t\"cat\": \"Usual\"\n\t}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/note",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"note"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-notes GET localhost check",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "app_user_id",
+						"value": "test_user",
+						"type": "text"
+					},
+					{
+						"key": "app_user_name",
+						"value": "TestUserPJ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/notes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"notes"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

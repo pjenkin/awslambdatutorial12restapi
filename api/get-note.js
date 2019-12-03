@@ -26,9 +26,9 @@ exports.handler = async(event) =>
         let params = {
             TableName: tableName,
             IndexName: "note_id-index",
-            KeyConditionExpression: "note_id = :note_id",       // variable/field definitions to follow...
+            KeyConditionExpression: "note_id = :note_id",       // variable/field definitions (or at least field definition) to follow... (why no leading '#'?)
             ExpressionAttributeValues: {
-                "note_id": note_id
+                ":note_id": note_id
             },
             Limit: 1        // should only be 1 record (note) at most
         }
