@@ -31,6 +31,7 @@ provider:
   environment:
     NOTES_TABLE: ${self:service}-${opt:stage, self:provider.stage}  # environment variable for table name, this will set up in provider
     # the computed table name (in the environment variable) would be servicename-stagename e.g. sls-snotes-backend-prod
+    # also used in the Lambda Functions for add-note.js &c
 
 resources:
   Resources:
