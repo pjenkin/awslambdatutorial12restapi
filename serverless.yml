@@ -20,6 +20,9 @@ service: sls-notes-backend
 # Check out our docs for more details
 # frameworkVersion: "=X.X.X"
 
+plugins:
+  - serverless-offline
+
 provider:
   name: aws
   runtime: nodejs12.x
@@ -32,6 +35,15 @@ provider:
     NOTES_TABLE: ${self:service}-${opt:stage, self:provider.stage}  # environment variable for table name, this will set up in provider
     # the computed table name (in the environment variable) would be servicename-stagename e.g. sls-snotes-backend-prod
     # also used in the Lambda Functions for add-note.js &c
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:Query
+        - dynamodb:PutItem
+        - dynamodb:DeleteItem
+      Resource: "arn:aws:dynamodb:${opt: region, self:provider.region}:*:table/${self:provider.environment.NOTES_TABLE}"
+      # region code either from command line (opt) or from the provider properties; table name from the environment variable defined above
+        
 
 resources:
   Resources:
