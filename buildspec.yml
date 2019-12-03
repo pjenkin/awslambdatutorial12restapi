@@ -1,0 +1,26 @@
+# 12-200 Buildspec added for Setting up CI/CD Pipeline for deplyment automation
+
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo Installing Serverless
+      - npm install -g serverless
+
+phases:
+  pre-build:
+    commands:
+      - echo Install source NPM dependency packages...
+      - npm install
+phases:
+  build:
+    commands:
+      - echo Deployment started on `date`
+      - echo Deploying by use of the Serverless Framework (i.e. serverless command)
+      - echo Using environment variable (for stage name) set in Pipeline config
+      - serverless deploy -v -s $ENV_NAME
+phases:
+  post_build:
+    commands:
+      - echo Deployment completed on/at `date`
