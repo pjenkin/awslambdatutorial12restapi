@@ -3,7 +3,7 @@
 
 
 /**
- * ROUTE: POST /note/t/{timestamp} - the endpoint
+ * ROUTE: DELETE /note/t/{timestamp} - the endpoint
  * timestamp (sort key in Dynamo table) to be used to identify note
  * Delete a specific note
  */
