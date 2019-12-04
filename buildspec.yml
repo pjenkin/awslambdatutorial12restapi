@@ -17,8 +17,8 @@ phases:
   build:
     commands:
       - echo Deployment started on `date`
-      - echo Deploying by use of the Serverless Framework (i.e. serverless command)
-      - echo Using environment variable (for stage name) set in Pipeline config
+      - echo Deploying by use of the Serverless Framework i.e. serverless command
+      - echo Using environment variable for stage name which is set in Pipeline config
       - serverless deploy -v -s $ENV_NAME
 phases:
   post_build:
