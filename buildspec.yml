@@ -8,19 +8,18 @@ phases:
       - echo Installing Serverless
       - npm install -g serverless
 
-phases:
   pre_build:    # NB pre-build (hyphen not dash) will give "Invalid buildspec phase" error
     commands:
       - echo Install source NPM dependency packages...
       - npm install
-phases:
+
   build:
     commands:
       - echo Deployment started on `date`
       - echo Deploying by use of the Serverless Framework i.e. serverless command
       - echo Using environment variable for stage name which is set in Pipeline config
       - serverless deploy -v -s $ENV_NAME
-phases:
+      
   post_build:
     commands:
       - echo Deployment completed on/at `date`
