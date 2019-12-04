@@ -9,7 +9,7 @@ phases:
       - npm install -g serverless
 
 phases:
-  pre-build:
+  pre_build:    # NB pre-build (hyphen not dash) will give "Invalid buildspec phase" error
     commands:
       - echo Install source NPM dependency packages...
       - npm install
