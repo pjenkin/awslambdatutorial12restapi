@@ -22,6 +22,7 @@ service: sls-notes-backend
 
 plugins:
   - serverless-offline
+  - serverless-domain-manager
 
 custom:
   allowedHeaders:
@@ -36,6 +37,13 @@ custom:
     # The below headers are the custom headers as defined in util.js
     - app_user_id
     - app_user_name
+  customDomain:
+    domainName: api.pnjskilz.xyz    # 12-210 : 2:20 pnjskilz.co.uk (not TLD?) registered 5/12/19
+    basePath: 'v1'
+    stage: {self.provider.stage}    # the service's stage, I think, in turn coming from a CodePipeline environment variable
+    certificateName: pnjskilz.xyz   # can use domain name - HTTPS required so a SSLcertificate must be setup/used (later - from AWS)
+    createRoute53Record: true       # will generate Route53 record to map between this custom domain and a CloudFront resource
+
 
 
 provider:
