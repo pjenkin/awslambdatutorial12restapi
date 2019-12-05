@@ -40,7 +40,7 @@ custom:
   customDomain:
     domainName: api.pnjskilz.co.uk    # 12-210 : 2:20 pnjskilz.co.uk (not TLD?) registered 5/12/19
     basePath: 'v1'
-    stage: {self.provider.stage}    # the service's stage, I think, in turn coming from a CodePipeline environment variable
+    stage: ${self.provider.stage}    # the service's stage, I think, in turn coming from a CodePipeline environment variable
     certificateName: pnjskilz.co.uk   # can use domain name - HTTPS required so a SSLcertificate must be setup/used (later - from AWS)
     createRoute53Record: true       # will generate Route53 record to map between this custom domain and a CloudFront resource
 
