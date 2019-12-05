@@ -255,6 +255,324 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "get-notes from API Invoke URL",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "app_user_id",
+						"value": "test_user",
+						"type": "text"
+					},
+					{
+						"key": "app_user_name",
+						"value": "TestUserPJ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://rwhx6k9ra6.execute-api.eu-west-2.amazonaws.com/prod/notes",
+					"protocol": "https",
+					"host": [
+						"rwhx6k9ra6",
+						"execute-api",
+						"eu-west-2",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"prod",
+						"notes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-notes from API custom domain URL",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "app_user_name",
+						"value": "TestUserPJ",
+						"type": "text"
+					},
+					{
+						"key": "app_user_id",
+						"value": "test_user",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api.pnjskilz.co.uk/v1/notes",
+					"protocol": "https",
+					"host": [
+						"api",
+						"pnjskilz",
+						"co",
+						"uk"
+					],
+					"path": [
+						"v1",
+						"notes"
+					]
+				},
+				"description": "After renting pnjskilz.co.uk, tried setting up Serverless & Route 53 custom domain (NB nicer URL)"
+			},
+			"response": []
+		},
+		{
+			"name": "get-notes (environment) from API custom domain URL",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "app_user_name",
+						"value": "TestUserPJ",
+						"type": "text"
+					},
+					{
+						"key": "app_user_id",
+						"value": "test_user",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{ENV_NAME}}/notes",
+					"host": [
+						"{{ENV_NAME}}"
+					],
+					"path": [
+						"notes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-notes (environment) from API Invoke URL",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "app_user_id",
+						"value": "test_user",
+						"type": "text"
+					},
+					{
+						"key": "app_user_name",
+						"value": "TestUserPJ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{ENV_NOTES}}/notes",
+					"host": [
+						"{{ENV_NOTES}}"
+					],
+					"path": [
+						"notes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-note (singular) (environment) GET localhost check",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "app_user_id",
+						"value": "test_user",
+						"type": "text"
+					},
+					{
+						"key": "app_user_name",
+						"value": "TestUserPJ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{ENV_NAME}}/note/n/test_user:835404f1-61e7-45e0-80f1-6a8fe6d3cca2",
+					"host": [
+						"{{ENV_NAME}}"
+					],
+					"path": [
+						"note",
+						"n",
+						"test_user:835404f1-61e7-45e0-80f1-6a8fe6d3cca2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-note (singular) (environment) GETcustom domain check",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "app_user_id",
+						"value": "test_user",
+						"type": "text"
+					},
+					{
+						"key": "app_user_name",
+						"value": "TestUserPJ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{ENV_NAME}}/note/n/test_user:835404f1-61e7-45e0-80f1-6a8fe6d3cca2",
+					"host": [
+						"{{ENV_NAME}}"
+					],
+					"path": [
+						"note",
+						"n",
+						"test_user:835404f1-61e7-45e0-80f1-6a8fe6d3cca2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add-note (environment) POST localhost check",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "app_user_id",
+						"value": "test_user",
+						"type": "text"
+					},
+					{
+						"key": "app_user_name",
+						"value": "TestUserPJ",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Item\":\n\t{\n\t\t\"title\": \"A first note\",\n\t\t\"content\": \"My first note d'say hello!\",\n\t\t\"cat\": \"Usual\"\n\t}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{ENV_NAME}}/note",
+					"host": [
+						"{{ENV_NAME}}"
+					],
+					"path": [
+						"note"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update-note (environment) PATCH localhost check",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "app_user_id",
+						"value": "test_user",
+						"type": "text"
+					},
+					{
+						"key": "app_user_name",
+						"value": "TestUserPJ",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Item\":\n\t{\n\t\t\"timestamp\": 1575400278,\n\t\t\"note_id\": \"test_user:835404f1-61e7-45e0-80f1-6a8fe6d3cca2\",\n\t\t\"title\": \"A first note, redux\",\n\t\t\"content\": \"My first note (whether or no on custom domain) d'still say hello!\",\n\t\t\"cat\": \"Usual\"\n\t}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{ENV_NAME}}/note",
+					"host": [
+						"{{ENV_NAME}}"
+					],
+					"path": [
+						"note"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete-notes (environment) DELETE localhost check",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "app_user_id",
+						"value": "test_user",
+						"type": "text"
+					},
+					{
+						"key": "app_user_name",
+						"value": "TestUserPJ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{ENV_NAME}}/note/t/",
+					"host": [
+						"{{ENV_NAME}}"
+					],
+					"path": [
+						"note",
+						"t",
+						""
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"protocolProfileBehavior": {}
