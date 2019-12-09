@@ -180,6 +180,16 @@ resources:
             ProvisionedThroughput:  # GSI will have its own ProvisionedThroughput
               ReadCapacityUnits: 1
               WriteCapacityUnits: 1
+    GatewayResponseDefault4XX:      # 14-232 Adding gateway responses for error handling
+      Type: AWS::ApiGateway::GatewayResponse
+      Properties:
+        ResponseParameters:
+          gatewayresponse.header.Access-Control-Allow-Origin: '*'
+          gatewayresponse.header.Access-Control-Allow-Origin: '*'
+        ResponseType: DEFAULT_4XX
+        RestApiId:
+          Ref: 'ApiGatewayRestApi'
+    # could also set up 500 responses (maybe some other time!)
 
 
 # you can overwrite defaults here
