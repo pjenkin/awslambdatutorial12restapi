@@ -10,6 +10,12 @@ const getUserName = (headers) => {
     return headers.app_user_name;
 }
 
+// 14-233 Authorising against Cognito identity pool using this Lambda Function
+// this function is to get the JWT token for use in temporary authorisation from AWS
+const getIdToken = (headers) => {
+    return headers.Authorization;
+}
+
 
 // CORS-friendly header content with which to make HTTP Response
 const getResponseHeaders = () => {
