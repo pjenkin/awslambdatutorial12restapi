@@ -71,6 +71,22 @@ provider:
 
 # 12-206 Defining Lambda Functions & API endpoints 
 functions:
+
+  # 14-231 Configuring Lambda Function to use with Cognito authorisation
+  authenticate-google:
+    handler: api/authenticate-google.handler    # filename.functionname
+    description: Google Identity Platform IDP authentication
+    events:
+      - http:
+          path: auth        # NB double-indent
+          method: get
+          # no authoriser should be set here - this function is itself to do with getting authorisation
+          cors: 
+            origin: '*'
+            headers:  ${self:custom.allowedHeaders}   # use custom property defined above to whitelist
+        # NB custom headers are used (with user_id and user_name - cf util.js) - these Requests must be allowed through API Gateway
+
+
   add-note:
     handler: api/add-note.handler   # filename.handler
     description: POST /note
