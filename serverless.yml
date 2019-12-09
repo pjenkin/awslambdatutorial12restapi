@@ -58,6 +58,8 @@ provider:
     NOTES_TABLE: ${self:service}-${opt:stage, self:provider.stage}  # environment variable for table name, this will set up in provider
     # the computed table name (in the environment variable) would be servicename-stagename e.g. sls-snotes-backend-prod
     # also used in the Lambda Functions for add-note.js &c
+    COGNITO_IDENTITY_POOL_ID: eu-west-2:0284b7d2-3e7e-42c6-b2fc-70a499f5be14  # 14-230 Adding Cognito federated identity authorizer
+
   iamRoleStatements:
     - Effect: Allow
       Action:
@@ -76,6 +78,7 @@ functions:
       - http:
           path: note                # NB double indenting
           method: post
+          authorizer: aws_iam       # 14-230 Adding Cognito federated identity authorizer 
           cors: 
             origin: '*'
             headers:  ${self:custom.allowedHeaders}   # use custom property defined above to whitelist
@@ -88,6 +91,7 @@ functions:
       - http:
           path: note                # NB double indenting
           method: patch
+          authorizer: aws_iam       # 14-230 Adding Cognito federated identity authorizer 
           cors: 
             origin: '*'
             headers:  ${self:custom.allowedHeaders}   # use custom property defined above to whitelist
@@ -99,6 +103,7 @@ functions:
       - http:
           path: notes                # NB double indenting
           method: get
+          authorizer: aws_iam       # 14-230 Adding Cognito federated identity authorizer 
           cors: 
             origin: '*'
             headers:  ${self:custom.allowedHeaders}   # use custom property defined above to whitelist
@@ -110,6 +115,7 @@ functions:
       - http:
           path: note/n/{note_id}     # NB double indenting
           method: get
+          authorizer: aws_iam       # 14-230 Adding Cognito federated identity authorizer 
           cors: 
             origin: '*'
             headers:  ${self:custom.allowedHeaders}   # use custom property defined above to whitelist
@@ -121,6 +127,7 @@ functions:
       - http:
           path: note/t/{timestamp}     # NB double indenting
           method: delete
+          authorizer: aws_iam       # 14-230 Adding Cognito federated identity authorizer 
           cors: 
             origin: '*'
             headers:  ${self:custom.allowedHeaders}   # use custom property defined above to whitelist
